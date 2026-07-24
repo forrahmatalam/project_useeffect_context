@@ -2,9 +2,12 @@ import React from "react";
 import { FaShoppingCart, FaHeart, FaStar} from "react-icons/fa";
 
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product,setAddCart}) => {
 
-console.log(product)
+const addToCart = () => {
+  setAddCart((prev) => [...prev, product]);
+  alert("Product Added Successfully");
+};
 
   return (
     <div className="w-80  bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
@@ -61,7 +64,7 @@ console.log(product)
         </div>
 
         {/* Button */}
-        <button className="mt-3 bg-rose-500 hover:bg-rose-600 text-white py-3 rounded-xl flex justify-center items-center gap-2 font-semibold transition">
+        <button onClick={addToCart} className="mt-3 bg-rose-500 hover:bg-rose-600 text-white py-3 rounded-xl flex justify-center items-center gap-2 font-semibold transition">
 
           <FaShoppingCart />
 

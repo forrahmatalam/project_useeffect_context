@@ -12,6 +12,10 @@ const App = () => {
 
   const [cartOpen, setCartOpen] = useState(false)
 
+  const [addCart, setAddCart] = useState([])
+
+  console.log(addCart)
+
 const getProductData =async () => {
   try{
 
@@ -37,13 +41,14 @@ getProductData()
 
 {
   cartOpen ? (
-    <Cart />
+    <Cart addCart={addCart} />
   ) : (
     <div className="flex flex-wrap gap-6 p-5">
       {productData.map((elem) => (
         <ProductCard
           key={elem.id}
           product={elem}
+          setAddCart = {setAddCart}
         />
       ))}
     </div>
