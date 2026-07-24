@@ -4,12 +4,12 @@ import { useContext } from "react";
 import { MyStore } from "../context/MyContext";
 
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product,isInCard}) => {
 
-let {setAddCart}=useContext(MyStore);
+let {setAddCart,incrementQuantity,decrementQuantity}=useContext(MyStore);
 
 const addToCart = () => {
-  setAddCart((prev) => [...prev, product]);
+  setAddCart((prev) => [...prev, {...product, quantity: 1}]);
   alert("Product Added Successfully");
 };
 
@@ -37,6 +37,9 @@ const addToCart = () => {
         <span className="bg-rose-100 text-rose-600 text-xs font-semibold px-3 py-1 rounded-full w-fit">
           {product.category}
         </span>
+
+
+
 
         {/* Title */}
         <h2 className="text-lg font-bold text-gray-800 line-clamp-2">
@@ -68,12 +71,15 @@ const addToCart = () => {
         </div>
 
         {/* Button */}
-        <button onClick={addToCart} className="mt-3 bg-rose-500 hover:bg-rose-600 text-white py-3 rounded-xl flex justify-center items-center gap-2 font-semibold transition">
+       
+       {
+        isInCard ? <button className="mt-3 bg-yellow-600 hover:bg-yellow-700 text-white py-3 rounded-xl flex justify-center items-center gap-2 font-semibold transition"><span onClick={() => decrementQuantity(product.id)} className="text-2xl">{isInCard.quantity > 1 && "-"}</span><span className="text-2xl">{isInCard.quantity}</span><span onClick={() => incrementQuantity(product.id)} className="text-2xl">+</span></button> : <button onClick={addToCart} className="mt-3 bg-rose-500 hover:bg-rose-600 text-white py-3 rounded-xl flex justify-center items-center gap-2 font-semibold transition">
 
           <FaShoppingCart />
 
           Add To Cart
         </button>
+       }
 
       </div>
     </div>

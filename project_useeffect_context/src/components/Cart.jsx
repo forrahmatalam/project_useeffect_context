@@ -31,6 +31,10 @@ const Cart = () => {
               </div>
             </div>
 
+            <div>
+              <p>Quantity: {item.quantity}</p>
+            </div>
+
             <button className="bg-red-500 text-white px-3 py-2 rounded">
               Remove
             </button>
