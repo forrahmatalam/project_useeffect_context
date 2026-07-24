@@ -1,8 +1,12 @@
 import React from "react";
 import { FaShoppingCart, FaHeart, FaStar} from "react-icons/fa";
+import { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
 
-const ProductCard = ({product,setAddCart}) => {
+const ProductCard = ({product}) => {
+
+let {setAddCart}=useContext(MyStore);
 
 const addToCart = () => {
   setAddCart((prev) => [...prev, product]);

@@ -1,6 +1,11 @@
 import React from "react";
+import { useContext } from "react";
+import { MyStore } from "../context/MyContext";
 
-const Cart = ({ addCart }) => {
+const Cart = () => {
+
+    let {addCart} = useContext(MyStore);
+
   return (
     <div className="p-5">
       <h1 className="text-3xl font-bold mb-5">🛒 Cart</h1>
